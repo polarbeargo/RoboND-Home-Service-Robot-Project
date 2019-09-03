@@ -1,3 +1,12 @@
 [submodule "catkin_ws/src/catkin_ws/src/slam_gmapping"]
 	path = catkin_ws/src/catkin_ws/src/slam_gmapping
 	url = https://github.com/ros-perception/slam_gmapping.git
+[submodule "catkin_ws/src/catkin_ws/src/turtlebot"]
+	path = catkin_ws/src/catkin_ws/src/turtlebot
+	url = https://github.com/turtlebot/turtlebot.git
+[submodule "catkin_ws/src/slam_gmapping"]
+	path = catkin_ws/src/slam_gmapping
+	url = https://github.com/ros-perception/slam_gmapping.git
+[submodule "catkin_ws/src/turtlebot"]
+	path = catkin_ws/src/turtlebot
+	url = https://github.com/turtlebot/turtlebot.git
