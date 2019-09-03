@@ -31,3 +31,37 @@ Here's a detailed task list of the steps you should take in order to implement t
 7. Build your **catkin_ws**.
 8. Run your **wall_follower.sh** shell script to autonomously map the environment.
 9. Once you are satisfied with the map, kill the wall_follower terminal and save your map in both **pgm** and **yaml** formats in the **World** directory of your **catkin_ws/src**.
+
+# RoboND-Home-Service-Robot
+
+The final project of the Udacity Robotics Software Engineer Nanodegree combines a number of elements from previous projects use everything you learned in the Nanodegree Program to build a Home Service Robot in ROS:
+1. Implement multiple shell scripts for convenient test project.
+2. Design enviroment using Gazebo with building editor
+3. Manually teleoperate designed robot and test SLAM using gmapping and teleop.
+4. Apply Adaptive Monte Carlo Localisation to detect the robot position within the known map create a wall_follower node that autonomously drives designed robot to map your environment.  
+5. Use the ROS move_base library to plot a path to a target pose and navigate to it.
+6. Write a pick_objects node to encompass the path planning and driving libraries, listening for goal poses.
+7. Write a add_markers node to publish goal poses for the robot, then compare these to the actual pose (odometry topic) to determine success.
+
+
+# Installation
+This repository is intended to run only on Linux Ubuntu v16.04 with ROS Kinetic. Create a Catkin Workspace as explained [here](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
+
+To install, clone the repository to /home/workspace. The command below will pull all required submodules and copy directly to Catkin Workspace.
+`git clone --recurse-submodules https://github.com/Polarbeargo/RoboND-Home-Service-Robot.git .`
+
+Once all the necessary files are in place, run the following commands from the catkin_ws directory:
+```
+source devel/setup.bash  
+catkin_make  
+sudo chmod 7 src/ShellScripts/*.sh
+```
+
+The default rviz configuration can be updated to show the marker locations running the following in a new terminal:
+```
+cp /home/workspace/catkin_ws/src/RVizConfig/navigation.rviz /home/workspace/catkin_ws/src/turtlebot_interactions/turtlebot_rviz_launchers/rviz/
+```
+
+# Running the Simulation
+From the `catkin_ws/` directory run the following command:
+`./src/ShellScripts/home_service.sh`
