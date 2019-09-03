@@ -10,3 +10,9 @@
 [submodule "catkin_ws/src/turtlebot"]
 	path = catkin_ws/src/turtlebot
 	url = https://github.com/turtlebot/turtlebot.git
+[submodule "catkin_ws/src/turtlebot_interactions"]
+	path = catkin_ws/src/turtlebot_interactions
+	url = https://github.com/turtlebot/turtlebot_interactions.git
+[submodule "catkin_ws/src/turtlebot_simulator"]
+	path = catkin_ws/src/turtlebot_simulator
+	url = https://github.com/turtlebot/turtlebot_simulator.git
