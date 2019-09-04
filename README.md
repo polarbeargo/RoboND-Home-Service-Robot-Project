@@ -50,6 +50,26 @@ This repository is intended to run only on Linux Ubuntu v16.04 with ROS Kinetic.
 To install, clone the repository to /home/workspace. The command below will pull all required submodules and copy directly to Catkin Workspace.
 `git clone --recurse-submodules https://github.com/Polarbeargo/RoboND-Home-Service-Robot.git .`
 
+Import the following packages and install them in the `src` directory of `catkin workspace`. Be sure to clone the full GitHub directory and not just the package itself.
+
+This repository already includes official ROS packages compatible with this repository: 
+* [gmapping](https://github.com/ros-perception/slam_gmapping)
+* [turtlebot_teleop](http://wiki.ros.org/turtlebot_teleop) 
+* [turtlebot_rviz_launchers](https://github.com/turtlebot/turtlebot_interactions)
+* [turtlebot_gazebo](https://github.com/turtlebot/turtlebot_simulator)  
+
+Their dependencies must be installed to succesfully use this repository:  
+```
+cd /home/workspace/catkin_ws/src
+git clone https://github.com/hemingchen/RoboND-Home-Service-Robot-Project.git
+rosdep -i install gmapping -y
+rosdep -i install turtlebot_teleop -y
+rosdep -i install turtlebot_rviz_launchers -y
+rosdep -i install turtlebot_gazebo -y
+cd ..
+catkin_make
+```
+
 Once all the necessary files are in place, run the following commands from the catkin_ws directory:
 ```
 source devel/setup.bash  
