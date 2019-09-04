@@ -11,16 +11,19 @@ int main( int argc, char** argv )
   // Set our initial shape type to be a cube
   uint32_t shape = visualization_msgs::Marker::CUBE;
 
+  double start[2] = {3.12, 5.13};
+  double end[2] = {-3.96, 6.14};
+
   while (ros::ok())
   {
     visualization_msgs::Marker marker;
     // Set the frame ID and timestamp.  See the TF tutorials for information on these.
-    marker.header.frame_id = "/my_frame";
+    marker.header.frame_id = "/map";
     marker.header.stamp = ros::Time::now();
 
     // Set the namespace and id for this marker.  This serves to create a unique ID
     // Any marker sent with the same namespace and id will overwrite the old one
-    marker.ns = "basic_shapes";
+    marker.ns = "add_markers";
     marker.id = 0;
 
     // Set the marker type.  Initially this is CUBE, and cycles between that and SPHERE, ARROW, and CYLINDER
@@ -30,8 +33,8 @@ int main( int argc, char** argv )
     marker.action = visualization_msgs::Marker::ADD;
 
     // Set the pose of the marker.  This is a full 6DOF pose relative to the frame/time specified in the header
-    marker.pose.position.x = 0;
-    marker.pose.position.y = 0;
+    marker.pose.position.x = start[0];
+    marker.pose.position.y = start[1];
     marker.pose.position.z = 0;
     marker.pose.orientation.x = 0.0;
     marker.pose.orientation.y = 0.0;
@@ -63,6 +66,11 @@ int main( int argc, char** argv )
     }
     marker_pub.publish(marker);
 
+    ros::Duration(5).sleep();
+    marker.action = visualization_msgs::Marker::DELETE;
+    marker_pub.publish(marker);
+    ros::Duration(5).sleep();
+
     // Cycle between different shapes
     switch (shape)
     {
@@ -79,7 +87,13 @@ int main( int argc, char** argv )
       shape = visualization_msgs::Marker::CUBE;
       break;
     }
+    marker.pose.position.x = end[0];
+    marker.pose.position.y = end[1];
+    marker.type = shape;
+    marker.action = visualization_msgs::Marker::ADD;
 
+    marker_pub.publish(marker);
+    ros::Duration(5).sleep();
     r.sleep();
   }
 }
