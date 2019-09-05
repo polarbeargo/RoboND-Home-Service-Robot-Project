@@ -61,7 +61,6 @@ This repository already includes official ROS packages compatible with this repo
 Their dependencies must be installed to succesfully use this repository:  
 ```
 cd /home/workspace/catkin_ws/src
-git clone https://github.com/hemingchen/RoboND-Home-Service-Robot-Project.git
 rosdep -i install gmapping -y
 rosdep -i install turtlebot_teleop -y
 rosdep -i install turtlebot_rviz_launchers -y
