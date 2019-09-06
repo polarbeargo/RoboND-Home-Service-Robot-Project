@@ -78,11 +78,6 @@ source devel/setup.bash
 sudo chmod 7 src/ShellScripts/*.sh
 ```
 
-Updated the default rviz configuration to show the marker locations by run the following commands:
-```
-cp /home/workspace/catkin_ws/src/RVizConfig/navigation.rviz /home/workspace/catkin_ws/src/turtlebot_interactions/turtlebot_rviz_launchers/rviz/
-```
-
 # Running the Simulation
 From the `catkin_ws/` directory run the following commands:  
 
