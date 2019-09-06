@@ -1,5 +1,9 @@
 [![Udacity - Robotics NanoDegree Program](https://s3-us-west-1.amazonaws.com/udacity-robotics/Extra+Images/RoboND_flag.png)](https://www.udacity.com/robotics)
 
+[//]: # (Image References)
+[image1]: ./images/2Dnav.gif
+[image2]: ./images/homeService.gif
+
 # RoboND-PathPlanning
 A wall_follower ROS C++ node for the Home Service Robot Project. This node will autonomously drive your robot close to the walls while avoiding obstacles on its path.
 
@@ -65,18 +69,16 @@ rosdep -i install gmapping -y
 rosdep -i install turtlebot_teleop -y
 rosdep -i install turtlebot_rviz_launchers -y
 rosdep -i install turtlebot_gazebo -y
+```
+Once all the necessary package are installed, run the following commands from the catkin_ws directory:
+```
 cd ..
 catkin_make
-```
-
-Once all the necessary files are in place, run the following commands from the catkin_ws directory:
-```
-source devel/setup.bash  
-catkin_make  
+source devel/setup.bash   
 sudo chmod 7 src/ShellScripts/*.sh
 ```
 
-The default rviz configuration can be updated to show the marker locations running the following in a new terminal:
+Updated the default rviz configuration to show the marker locations by run the following commands:
 ```
 cp /home/workspace/catkin_ws/src/RVizConfig/navigation.rviz /home/workspace/catkin_ws/src/turtlebot_interactions/turtlebot_rviz_launchers/rviz/
 ```
@@ -104,3 +106,7 @@ Home Service
 ```bash
 $ ./src/ShellScripts/home_service.sh
 ```
+
+# Results demo  
+![][image1]    
+![][image2]
