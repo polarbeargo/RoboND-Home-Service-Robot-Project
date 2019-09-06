@@ -82,5 +82,25 @@ cp /home/workspace/catkin_ws/src/RVizConfig/navigation.rviz /home/workspace/catk
 ```
 
 # Running the Simulation
-From the `catkin_ws/` directory run the following command:
-`./src/ShellScripts/home_service.sh`
+From the `catkin_ws/` directory run the following commands:  
+
+Testing SLAM
+``` bash
+$ ./src/ShellScripts/test_slam.sh
+```
+Testing Navigation
+``` bash
+$ ./src/ShellScripts/test_navigation.sh
+```
+Pick_objects
+``` bash
+$ ./src/ShellScripts/pick_objects.sh
+```
+Add Markers
+``` bash
+$ ./src/ShellScripts/add_marker.sh
+```
+Home Service
+```bash
+$ ./src/ShellScripts/home_service.sh
+```
