@@ -107,6 +107,6 @@ Home Service
 $ ./src/ShellScripts/home_service.sh
 ```
 
-# Results demo  
+# Result  
 ![][image1]    
 ![][image2]
