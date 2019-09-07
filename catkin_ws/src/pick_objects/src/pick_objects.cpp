@@ -41,7 +41,7 @@ int main(int argc, char** argv){
     ROS_INFO("Hooray, the base moved 1 meter forward");
     ros::Duration(5).sleep();
     // Define the second target for the robot to reach
-    goal.target_pose.pose.position.x = 0.0;
+    //goal.target_pose.pose.position.x = 0.0;
     goal.target_pose.pose.position.y = 4.0;
     goal.target_pose.pose.orientation.w = 1.0;
 
