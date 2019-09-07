@@ -37,32 +37,30 @@ int main(int argc, char** argv){
 
   // Check if the robot reached its goal
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-    ROS_INFO("Hooray, the base moved 1 meter forward");
-  else
-    ROS_INFO("The base failed to move forward 1 meter for some reason");
-  
-  if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
   {
+    ROS_INFO("Hooray, the base moved 1 meter forward");
     ros::Duration(5).sleep();
-
-    goal.target_pose.header.stamp = ros::Time::now();
-
-    // Define the second target for the robot to reach
-    goal.target_pose.pose.position.y = 5.0;
-    goal.target_pose.pose.orientation.w = 1.0;
-
-    // Send the goal position and orientation for the robot to reach
-    ROS_INFO("Sending second goal");
-    ac.sendGoal(goal);
-
-    // Wait an infinite time for the results
-    ac.waitForResult();
-
-    // Check if the robot reached its second goal
-    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-      ROS_INFO("Hooray, the base moved to the second goal");
-    else
-      ROS_INFO("The base failed to move to the second goal");
+  } else {
+    ROS_INFO("The base failed to move forward 1 meter for some reason");
   }
+  goal.target_pose.header.stamp = ros::Time::now();
+
+  // Define the second target for the robot to reach
+  goal.target_pose.pose.position.x = 0.0;
+  goal.target_pose.pose.position.y = 5.0;
+  goal.target_pose.pose.orientation.w = 1.0;
+
+  // Send the goal position and orientation for the robot to reach
+  ROS_INFO("Sending second goal");
+  ac.sendGoal(goal);
+
+  // Wait an infinite time for the results
+  ac.waitForResult();
+
+  // Check if the robot reached its second goal
+  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    ROS_INFO("Hooray, the base moved to the second goal");
+  else
+    ROS_INFO("The base failed to move to the second goal");
   return 0;
 }
