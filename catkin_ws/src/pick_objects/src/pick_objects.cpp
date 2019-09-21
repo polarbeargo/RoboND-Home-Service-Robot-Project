@@ -40,14 +40,22 @@ int main(int argc, char** argv){
   {
     ROS_INFO("Hooray, the base moved 1 meter forward");
     ros::Duration(5).sleep();
+
+    while(!ac.waitForServer(ros::Duration(5.0))){
+      ROS_INFO("Waiting for the move_base action server to come up");
+    }
+    move_base_msgs::MoveBaseGoal goal2;
+    goal2.target_pose.header.frame_id = "map";
+    goal2.target_pose.header.stamp = ros::Time::now();
+
     // Define the second target for the robot to reach
-    //goal.target_pose.pose.position.x = 0.0;
-    goal.target_pose.pose.position.y = 4.0;
-    goal.target_pose.pose.orientation.w = 1.0;
+    goal2.target_pose.pose.position.x = 3.0;
+    goal2.target_pose.pose.position.y = 4.0;
+    goal2.target_pose.pose.orientation.w = 1.0;
 
     // Send the goal position and orientation for the robot to reach
     ROS_INFO("Sending second goal");
-    ac.sendGoal(goal);
+    ac.sendGoal(goal2);
 
     // Wait an infinite time for the results
     ac.waitForResult();
