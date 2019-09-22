@@ -88,7 +88,6 @@ int main( int argc, char** argv )
 
   marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 
-
   // Set the frame ID and timestamp.  See the TF tutorials for information on these.
   marker.header.frame_id = "/map";
   marker.header.stamp = ros::Time::now();
@@ -133,6 +132,7 @@ int main( int argc, char** argv )
   ROS_INFO("Adding marker ...");
   marker_pub.publish(marker);
 
+  /*
   ROS_INFO("Wait 5 sec ...");
   ros::Duration(5.0).sleep();
   
@@ -150,8 +150,9 @@ int main( int argc, char** argv )
   marker.action = visualization_msgs::Marker::ADD;
   ROS_INFO("Adding marker at drop off ...");
   marker_pub.publish(marker);
-  
-  //ros::Subscriber odom_sub = n.subscribe("/odom", 1, odomCallback);
+  */
+
+  ros::Subscriber odom_sub = n.subscribe("/odom", 1, odomCallback);
 
   ros::Rate r(10.0); // 10 Hz
   while (ros::ok()) {
