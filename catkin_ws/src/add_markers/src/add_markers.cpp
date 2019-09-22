@@ -38,12 +38,14 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
     dist = std::sqrt(dx*dx+dy*dy);
     ROS_INFO("Picking up ... dist = %f", dist);
     if (dist < TOLERANCE && picking_up) {
-      
+      // we are at the pickup location
       ROS_INFO("Pick UP object");
-      
+
+      // Issue pickup-delete marker
       marker.action = visualization_msgs::Marker::DELETE;
       marker_pub.publish(marker);
 
+      // Wait 5 seconds before trying to show other markers
       ros::Duration(5.0).sleep();
 
       picking_up = false;
@@ -82,6 +84,7 @@ int main( int argc, char** argv )
 {
   ros::init(argc, argv, "add_markers");
   ros::NodeHandle n;
+
 
   marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 
@@ -130,7 +133,25 @@ int main( int argc, char** argv )
   ROS_INFO("Adding marker ...");
   marker_pub.publish(marker);
 
-  ros::Subscriber odom_sub = n.subscribe("/odom", 1, odomCallback);
+  ROS_INFO("Wait 5 sec ...");
+  ros::Duration(5.0).sleep();
+  
+  // Delete marker
+  marker.action = visualization_msgs::Marker::DELETE;
+  ROS_INFO("Remove marker ...");
+  marker_pub.publish(marker);
+  ROS_INFO("Wait 5 sec ...");
+  ros::Duration(5.0).sleep();
+  
+  // Show at drop off zone
+  marker.pose.position.x = DROPOFF_X;
+  marker.pose.position.y = DROPOFF_Y;
+  marker.pose.position.z = 0;
+  marker.action = visualization_msgs::Marker::ADD;
+  ROS_INFO("Adding marker at drop off ...");
+  marker_pub.publish(marker);
+  
+  //ros::Subscriber odom_sub = n.subscribe("/odom", 1, odomCallback);
 
   ros::Rate r(10.0); // 10 Hz
   while (ros::ok()) {
