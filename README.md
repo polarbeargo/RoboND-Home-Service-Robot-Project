@@ -5,6 +5,7 @@
 [image2]: ./images/homeService.gif
 [image3]: ./images/wall.gif
 [image4]: ./images/pickObject.gif
+[image5]: ./images/addMarkersh.gif
 
 # RoboND-PathPlanning
 A wall_follower ROS C++ node for the Home Service Robot Project. This node will autonomously drive your robot close to the walls while avoiding obstacles on its path.
@@ -86,26 +87,25 @@ From the `catkin_ws/` directory run the following commands:
 Testing SLAM
 ``` bash
 $ ./src/ShellScripts/test_slam.sh
-```
+```  
+![][image3]  
 Testing Navigation
 ``` bash
 $ ./src/ShellScripts/test_navigation.sh
-```
+```  
+![][image1]  
 Pick_objects
 ``` bash
 $ ./src/ShellScripts/pick_objects.sh
-```
+```  
+![][image4]  
+
 Add Markers
 ``` bash
 $ ./src/ShellScripts/add_marker.sh
-```
+```  
+![][image5]
 Home Service
 ```bash
 $ ./src/ShellScripts/home_service.sh
 ```
-
-# Results   
-
-![][image3]  
-![][image1]    
-![][image4]
